@@ -26,17 +26,19 @@ const images = [
 ];
 
 const galeryList = document.querySelector('.gallery');
+const fragment = document.createDocumentFragment();
 images.forEach(image => {
   const galeryElement = document.createElement('li');
   const galeryImg = document.createElement('img');
 
   galeryImg.setAttribute('src', image.url);
   galeryImg.setAttribute('alt', image.alt);
-  galeryElement.classList.add('gallery-item');
   galeryImg.setAttribute('style', 'width: 400px; height: auto');
 
   galeryElement.append(galeryImg);
-  galeryList.append(galeryElement);
-  galeryList.style.listStyleType = 'none';
+  fragment.append(galeryElement);
 });
+
+galeryList.append(fragment);
+galeryList.style.listStyleType = 'none';
 console.log(galeryList);

@@ -8,13 +8,13 @@ const newBox = document.querySelector('#boxes');
 const createBtn = document.querySelector('[data-create]');
 const destroyBtn = document.querySelector('[data-destroy]');
 
-const createBoxes = () => {
+const createBoxes = amount => {
   let step = 30;
   const array = [];
-  if (numbersValue.value < 1 || numbersValue.value > 100) {
+  if (amount < 1 || amount > 100) {
     return;
   }
-  for (let i = 0; i < numbersValue.value; i++) {
+  for (let i = 0; i < amount; i++) {
     array.push(
       `<div style="width: ${step}px; height: ${step}px; background-color: ${getRandomHexColor()};"></div>`,
     );
@@ -25,6 +25,7 @@ const createBoxes = () => {
 };
 const destroyBoxes = () => {
   newBox.innerHTML = '';
+  numbersValue.value = '';
 };
-createBtn.addEventListener('click', createBoxes);
+createBtn.addEventListener('click', () => createBoxes(numbersValue.value));
 destroyBtn.addEventListener('click', destroyBoxes);
